@@ -9,13 +9,20 @@ import static java.util.Collections.emptyList;
 
 public class GildedStockManager {
 
-    private List<StockItem> stockList = new ArrayList<>();
+    private List<TimestampedItem> stockList = new ArrayList<>();
+    private GildedClock clock;
 
-    public List<StockItem> stockList() {
+    public GildedStockManager(GildedClock clock) {
+        this.clock = clock;
+    }
+
+    public GildedStockManager() {}
+
+    public List<TimestampedItem> stockList() {
         return stockList;
     }
 
-    public void addItem(StockItem item) {
+    public void addItem(TimestampedItem item) {
         stockList.add(item);
     }
 
