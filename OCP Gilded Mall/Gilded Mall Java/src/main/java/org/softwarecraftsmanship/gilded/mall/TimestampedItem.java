@@ -19,4 +19,8 @@ public abstract class TimestampedItem extends StockItem {
     }
 
     abstract BigDecimal getPrice(LocalDate today);
+
+    boolean isSellable(LocalDate today) {
+        return true;
+    }
 }
