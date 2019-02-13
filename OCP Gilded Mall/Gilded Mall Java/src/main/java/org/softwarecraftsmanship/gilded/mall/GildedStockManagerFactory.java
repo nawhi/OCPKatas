@@ -6,7 +6,7 @@ public class GildedStockManagerFactory {
         return new GildedStockManager();
     }
 
-    public static GildedStockAdapter<GildedDress> createForGildedDress() {
+    public static GildedStockAdapter<GildedDressItem> createForGildedDress() {
         return new GildedStockAdapter<>(new GildedStockManager());
     }
 }

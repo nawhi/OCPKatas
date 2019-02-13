@@ -41,12 +41,12 @@ public class GildedStockManagerShould {
 
     @Test
     public void reduce_Gilded_Dress_items_by_a_quarter_after_10_weeks() {
-        GildedStockAdapter<GildedDress> shop = GildedStockManagerFactory.createForGildedDress();
+        GildedStockAdapter<GildedDressItem> shop = GildedStockManagerFactory.createForGildedDress();
 
         LocalDate insertionDate = LocalDate.of(2018, 1, 1);
 
         BigDecimal originalPrice = BigDecimal.valueOf(4);
-        GildedDress dress = new GildedDress("Gilded Dress", originalPrice, insertionDate);
+        GildedDressItem dress = new GildedDressItem("Gilded Dress", originalPrice, insertionDate);
 
         shop.addItem(dress);
 
@@ -56,6 +56,7 @@ public class GildedStockManagerShould {
         BigDecimal actualPrice = dressFromStockList.getPrice(insertionDate.plusWeeks(10));
         assertThat(actualPrice.compareTo(reducedPrice)).isEqualTo(0);
     }
+
 
 
 }
