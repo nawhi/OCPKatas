@@ -41,12 +41,12 @@ public class GildedStockManagerShould {
 
     @Test
     public void reduce_Gilded_Dress_items_by_a_quarter_after_10_weeks() {
-        GildedStockManager shop = new GildedStockManager(clock);
+        GildedStockAdapter<GildedDress> shop = GildedStockManagerFactory.createForGildedDress();
 
         LocalDate insertionDate = LocalDate.of(2018, 1, 1);
 
         BigDecimal originalPrice = BigDecimal.valueOf(4);
-        TimestampedItem dress = new GildedDress("Gilded Dress", originalPrice, insertionDate);
+        GildedDress dress = new GildedDress("Gilded Dress", originalPrice, insertionDate);
 
         shop.addItem(dress);
 
