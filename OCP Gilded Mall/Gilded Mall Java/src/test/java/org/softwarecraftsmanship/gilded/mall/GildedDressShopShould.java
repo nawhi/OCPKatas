@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.dress;
+import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.dressShop;
 
 public class GildedDressShopShould {
 
@@ -15,7 +15,7 @@ public class GildedDressShopShould {
     @Test
     public void reduce_items_by_a_quarter_after_10_weeks() {
         LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
-        GildedStockAdapter shop = dress(() -> today);
+        GildedStockAdapter shop = dressShop(() -> today);
         BigDecimal reducedPrice = BigDecimal.valueOf(3);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
@@ -29,7 +29,7 @@ public class GildedDressShopShould {
     @Test
     public void get_monthly_report() {
         LocalDate today = INSERTION_DATE.plusDays(1);
-        GildedStockAdapter shop = dress(() -> today);
+        GildedStockAdapter shop = dressShop(() -> today);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
 
@@ -39,9 +39,9 @@ public class GildedDressShopShould {
     }
 
     @Test
-    public void get_monthly_report_with_depreciations() {
+    public void get_monthly_report_with_depreciation_in_last_30_days() {
         LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
-        GildedStockAdapter shop = dress(() -> today);
+        GildedStockAdapter shop = dressShop(() -> today);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
 

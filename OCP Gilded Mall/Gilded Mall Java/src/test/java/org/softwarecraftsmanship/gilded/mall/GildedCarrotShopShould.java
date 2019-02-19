@@ -24,12 +24,12 @@ public class GildedCarrotShopShould {
 
     @Test
     public void remove_carrot_items_after_seven_days() {
-        GildedStockAdapter shop = GildedStockManagerFactory.carrot(clock);
+        GildedStockAdapter shop = GildedStockManagerFactory.carrotShop(clock);
 
         LocalDate insertionDate = LocalDate.of(2018, 1, 1);
 
         BigDecimal price = BigDecimal.valueOf(1);
-        GildedCarrotItem carrotItem = new GildedCarrotItem("Gilded carrot", price, insertionDate);
+        GildedCarrotItem carrotItem = new GildedCarrotItem("Gilded carrotShop", price, insertionDate);
         shop.addItem(carrotItem);
 
         when(clock.today()).thenReturn(insertionDate.plusWeeks(1));

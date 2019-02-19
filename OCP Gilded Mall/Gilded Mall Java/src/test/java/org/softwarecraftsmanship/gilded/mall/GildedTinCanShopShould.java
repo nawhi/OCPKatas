@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
-import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.tinCan;
+import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.tinCanShop;
 
 public class GildedTinCanShopShould {
 
@@ -16,7 +16,7 @@ public class GildedTinCanShopShould {
 
     @Test
     public void remove_expired_items_from_stock_list() {
-        GildedStockAdapter shop = tinCan(() -> EXPIRY_DATE.plusDays(1));
+        GildedStockAdapter shop = tinCanShop(() -> EXPIRY_DATE.plusDays(1));
 
         shop.addItem(standardItem(BigDecimal.valueOf(4)));
 
@@ -27,7 +27,7 @@ public class GildedTinCanShopShould {
     @Test
     public void generate_report_with_loss_from_expired_items() {
 
-        GildedStockAdapter shop = tinCan(() -> EXPIRY_DATE.plusDays(1));
+        GildedStockAdapter shop = tinCanShop(() -> EXPIRY_DATE.plusDays(1));
 
         shop.addItem(standardItem(BigDecimal.valueOf(4)));
 
