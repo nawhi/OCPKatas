@@ -10,7 +10,7 @@ public class GildedCarrotItem extends TimestampedItem {
 
     @Override
     BigDecimal getPrice(LocalDate today) {
-        return super.getPrice();
+        return super.getPrice(today);
     }
 
     @Override

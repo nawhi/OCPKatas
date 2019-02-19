@@ -5,12 +5,14 @@ import org.softwarecraftsmanship.gilded.mall.GildedStockManager.StockItem;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public abstract class TimestampedItem extends StockItem {
+public abstract class TimestampedItem {
+
+    private StockItem item;
 
     private final LocalDate insertionDate;
 
     public TimestampedItem(String name, BigDecimal price, LocalDate insertionDate) {
-        super(name, price);
+        item = new StockItem(name, price);
         this.insertionDate = insertionDate;
     }
 
@@ -18,7 +20,7 @@ public abstract class TimestampedItem extends StockItem {
         return insertionDate;
     }
 
-    abstract BigDecimal getPrice(LocalDate today);
+    BigDecimal getPrice(LocalDate today) { return item.getPrice(); }
 
     boolean isSellable(LocalDate today) {
         return true;

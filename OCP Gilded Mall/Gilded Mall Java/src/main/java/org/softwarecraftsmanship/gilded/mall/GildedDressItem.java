@@ -10,13 +10,13 @@ public class GildedDressItem extends TimestampedItem {
 
     @Override
     BigDecimal getPrice(LocalDate today) {
-        BigDecimal basePrice = super.getPrice();
+        BigDecimal basePrice = super.getPrice(today);
         return olderthanTenWeeks(today)
                 ? basePrice.multiply(BigDecimal.valueOf(0.75))
                 : basePrice;
     }
 
     private boolean olderthanTenWeeks(LocalDate today) {
-        return today.minusWeeks(10).compareTo(getInsertionDate()) <= 0;
+        return getInsertionDate().plusWeeks(10).isBefore(today);
     }
 }

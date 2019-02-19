@@ -12,13 +12,17 @@ public class Report {
         this.depreciation = depreciation;
     }
 
+    public Report(double stockValue, double depreciation) {
+        this(BigDecimal.valueOf(stockValue), BigDecimal.valueOf(depreciation));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Report report = (Report) o;
-        return stockValue == report.stockValue &&
-                depreciation == report.depreciation;
+        return stockValue.compareTo(report.stockValue) == 0 &&
+                depreciation.compareTo(report.depreciation) == 0 ;
     }
 
     @Override
@@ -26,5 +30,11 @@ public class Report {
         return Objects.hash(stockValue, depreciation);
     }
 
-
+    @Override
+    public String toString() {
+        return "Report{" +
+                "stockValue=" + stockValue +
+                ", depreciation=" + depreciation +
+                '}';
+    }
 }

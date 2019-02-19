@@ -27,7 +27,7 @@ public class GildedStockAdapter<T extends TimestampedItem> {
     public Report getReport() {
         BigDecimal stockValue = stockManager.stockList()
                 .stream()
-                .map(i-> i.getPrice())
+                .map(i-> i.getPrice(clock.today()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         return new Report(stockValue, BigDecimal.valueOf(0));
