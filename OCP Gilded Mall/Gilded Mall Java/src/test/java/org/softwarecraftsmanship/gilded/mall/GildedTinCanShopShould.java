@@ -24,16 +24,13 @@ public class GildedTinCanShopShould {
         assertThat(shop.stockList().size(), is(0));
     }
 
-    @Ignore
     @Test
     public void generate_report_with_loss_from_expired_items() {
-
         GildedStockAdapter shop = tinCanShop(() -> EXPIRY_DATE.plusDays(1));
 
         shop.addItem(standardItem(BigDecimal.valueOf(4)));
 
         assertThat(shop.stockReport(), is(new Report(0, 4)));
-
     }
 
     private GildedTinCanItem standardItem(BigDecimal itemPrice) {
