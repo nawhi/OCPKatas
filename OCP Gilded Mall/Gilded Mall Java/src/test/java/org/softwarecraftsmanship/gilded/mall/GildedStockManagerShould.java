@@ -76,6 +76,18 @@ public class GildedStockManagerShould {
         assertEquals(0, shop.stockList().size());
     }
 
+    @Test
+    public void remove_carrot_items_after_seven_days() {
+        GildedStockAdapter<GildedCarrotItem> shop = GildedStockManagerFactory.createForGildedCarrot(clock);
 
+        LocalDate insertionDate = LocalDate.of(2018, 1, 1);
 
+        BigDecimal price = BigDecimal.valueOf(1);
+        GildedCarrotItem carrotItem = new GildedCarrotItem("Gilded carrot", price, insertionDate);
+        shop.addItem(carrotItem);
+
+        when(clock.today()).thenReturn(insertionDate.plusWeeks(1));
+
+        assertEquals(0, shop.stockList().size());
+    }
 }

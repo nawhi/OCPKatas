@@ -15,4 +15,8 @@ public class GildedStockManagerFactory {
     public static GildedStockAdapter<GildedTinCanItem> createForGildedTinCanItem(GildedClock clock) {
         return new GildedStockAdapter<>(new GildedStockManager(), clock);
     }
+
+    public static GildedStockAdapter<GildedCarrotItem> createForGildedCarrot(GildedClock clock) {
+        return new GildedStockAdapter<>(new GildedStockManager(), clock);
+    }
 }
