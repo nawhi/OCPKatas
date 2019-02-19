@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.dressShop;
 
 public class GildedDressShopShould {
@@ -16,14 +18,14 @@ public class GildedDressShopShould {
     public void reduce_items_by_a_quarter_after_10_weeks() {
         LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
         GildedStockAdapter shop = dressShop(() -> today);
+
+        BigDecimal originalPrice = BigDecimal.valueOf(4);
         BigDecimal reducedPrice = BigDecimal.valueOf(3);
 
-        shop.addItem(standardDress(BigDecimal.valueOf(4)));
+        shop.addItem(standardDress(originalPrice));
 
-        TimestampedItem dressFromStockList = shop.stockList().get(0);
-
-        BigDecimal actualPrice = dressFromStockList.getPrice(today);
-        assertThat(actualPrice.compareTo(reducedPrice)).isEqualTo(0);
+        BigDecimal actualPrice = shop.stockList().get(0).getPrice(today);
+        assertThat(actualPrice, comparesEqualTo(reducedPrice));
     }
 
     @Test
@@ -35,7 +37,7 @@ public class GildedDressShopShould {
 
         Report actualReport = shop.stockReport();
 
-        assertThat(actualReport).isEqualTo(new Report(4, 0));
+        assertThat(actualReport, is(new Report(4, 0)));
     }
 
     @Test
@@ -47,7 +49,7 @@ public class GildedDressShopShould {
 
         Report actualReport = shop.stockReport();
 
-        assertThat(actualReport).isEqualTo(new Report(3, 1));
+        assertThat(actualReport, is(new Report(3, 1)));
     }
 
 

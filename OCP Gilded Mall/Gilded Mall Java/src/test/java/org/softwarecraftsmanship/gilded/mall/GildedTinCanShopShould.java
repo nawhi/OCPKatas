@@ -6,7 +6,8 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.softwarecraftsmanship.gilded.mall.GildedStockManagerFactory.tinCanShop;
 
 public class GildedTinCanShopShould {
@@ -20,7 +21,7 @@ public class GildedTinCanShopShould {
 
         shop.addItem(standardItem(BigDecimal.valueOf(4)));
 
-        assertEquals(0, shop.stockList().size());
+        assertThat(shop.stockList().size(), is(0));
     }
 
     @Ignore
@@ -31,7 +32,7 @@ public class GildedTinCanShopShould {
 
         shop.addItem(standardItem(BigDecimal.valueOf(4)));
 
-        assertEquals(new Report(0, 4), shop.stockReport());
+        assertThat(shop.stockReport(), is(new Report(0, 4)));
 
     }
 
