@@ -38,6 +38,22 @@ public class GildedDressShopShould {
         assertThat(actualReport).isEqualTo(new Report(4, 0));
     }
 
+    @Test
+    public void get_monthly_report_with_depreciations() {
+        LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
+        GildedStockAdapter<GildedDressItem> shop = createForGildedDress(() -> today);
+
+        shop.addItem(standardDress(BigDecimal.valueOf(4)));
+
+        Report actualReport = shop.getReport();
+
+        assertThat(actualReport).isEqualTo(new Report(3, 1));
+    }
+
+
+
+
+
     private GildedDressItem standardDress(BigDecimal dressPrice) {
         return new GildedDressItem("Gilded Dress", dressPrice, INSERTION_DATE);
     }

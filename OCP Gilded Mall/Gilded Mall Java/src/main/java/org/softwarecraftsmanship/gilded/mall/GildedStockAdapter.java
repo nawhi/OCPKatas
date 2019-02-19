@@ -25,11 +25,23 @@ public class GildedStockAdapter<T extends TimestampedItem> {
     }
 
     public Report getReport() {
-        BigDecimal stockValue = stockManager.stockList()
+        BigDecimal originalStockValue = getOriginalStockValue();
+        BigDecimal stockValue = getCurrentStockValue();
+
+        return new Report(stockValue, originalStockValue.subtract(stockValue));
+    }
+
+    private BigDecimal getCurrentStockValue() {
+        return stockManager.stockList()
                 .stream()
                 .map(i-> i.getPrice(clock.today()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 
-        return new Report(stockValue, BigDecimal.valueOf(0));
+    private BigDecimal getOriginalStockValue() {
+        return stockManager.stockList()
+                .stream()
+                .map(i-> i.getPrice(i.getInsertionDate()))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
