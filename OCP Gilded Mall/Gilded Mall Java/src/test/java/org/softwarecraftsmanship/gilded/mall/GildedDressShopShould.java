@@ -15,7 +15,7 @@ public class GildedDressShopShould {
     @Test
     public void reduce_items_by_a_quarter_after_10_weeks() {
         LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
-        GildedStockAdapter<GildedDressItem> shop = dress(() -> today);
+        GildedStockAdapter shop = dress(() -> today);
         BigDecimal reducedPrice = BigDecimal.valueOf(3);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
@@ -29,7 +29,7 @@ public class GildedDressShopShould {
     @Test
     public void get_monthly_report() {
         LocalDate today = INSERTION_DATE.plusDays(1);
-        GildedStockAdapter<GildedDressItem> shop = dress(() -> today);
+        GildedStockAdapter shop = dress(() -> today);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
 
@@ -41,7 +41,7 @@ public class GildedDressShopShould {
     @Test
     public void get_monthly_report_with_depreciations() {
         LocalDate today = INSERTION_DATE.plusWeeks(10).plusDays(1);
-        GildedStockAdapter<GildedDressItem> shop = dress(() -> today);
+        GildedStockAdapter shop = dress(() -> today);
 
         shop.addItem(standardDress(BigDecimal.valueOf(4)));
 

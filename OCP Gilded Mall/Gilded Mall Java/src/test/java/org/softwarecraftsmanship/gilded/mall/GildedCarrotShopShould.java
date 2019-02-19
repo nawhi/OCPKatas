@@ -24,7 +24,7 @@ public class GildedCarrotShopShould {
 
     @Test
     public void remove_carrot_items_after_seven_days() {
-        GildedStockAdapter<GildedCarrotItem> shop = GildedStockManagerFactory.carrot(clock);
+        GildedStockAdapter shop = GildedStockManagerFactory.carrot(clock);
 
         LocalDate insertionDate = LocalDate.of(2018, 1, 1);
 

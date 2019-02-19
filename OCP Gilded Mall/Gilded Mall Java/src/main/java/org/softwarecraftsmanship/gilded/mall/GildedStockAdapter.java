@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class GildedStockAdapter<T extends TimestampedItem> {
+public class GildedStockAdapter {
 
     private GildedStockManager stockManager;
     private GildedClock clock;
@@ -27,7 +27,7 @@ public class GildedStockAdapter<T extends TimestampedItem> {
                 .filter(i -> i.isSellable(date));
     }
 
-    public void addItem(T item) {
+    public void addItem(TimestampedItem item) {
         stockManager.addItem(item);
     }
 
