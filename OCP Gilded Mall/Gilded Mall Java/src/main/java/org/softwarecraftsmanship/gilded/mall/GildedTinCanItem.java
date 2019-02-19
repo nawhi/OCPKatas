@@ -12,11 +12,6 @@ public class GildedTinCanItem extends TimestampedItem{
     }
 
     @Override
-    BigDecimal getPrice(LocalDate today) {
-        return null;
-    }
-
-    @Override
     boolean isSellable(LocalDate today) {
         return today.isBefore(sellByDate);
     }

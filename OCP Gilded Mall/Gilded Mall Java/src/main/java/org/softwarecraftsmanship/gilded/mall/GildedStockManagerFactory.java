@@ -6,15 +6,15 @@ public class GildedStockManagerFactory {
         return new GildedStockManager();
     }
 
-    public static GildedStockAdapter<GildedDressItem> createForGildedDress(GildedClock now) {
+    public static GildedStockAdapter<GildedDressItem> dress(GildedClock now) {
         return new GildedStockAdapter<>(new GildedStockManager(), now);
     }
 
-    public static GildedStockAdapter<GildedTinCanItem> createForGildedTinCanItem(GildedClock clock) {
+    public static GildedStockAdapter<GildedTinCanItem> tinCan(GildedClock clock) {
         return new GildedStockAdapter<>(new GildedStockManager(), clock);
     }
 
-    public static GildedStockAdapter<GildedCarrotItem> createForGildedCarrot(GildedClock clock) {
+    public static GildedStockAdapter<GildedCarrotItem> carrot(GildedClock clock) {
         return new GildedStockAdapter<>(new GildedStockManager(), clock);
     }
 }
