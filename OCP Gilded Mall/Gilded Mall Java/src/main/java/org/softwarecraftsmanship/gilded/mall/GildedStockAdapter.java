@@ -14,10 +14,9 @@ public class GildedStockAdapter<T extends TimestampedItem> {
         this.clock = clock;
     }
 
-    public List<T> stockList() {
+    public List<TimestampedItem> stockList() {
         return stockManager.stockList().stream()
                 .filter(i -> i.isSellable(clock.today()))
-                .map(i -> (T) i)
                 .collect(Collectors.toList());
     }
 
